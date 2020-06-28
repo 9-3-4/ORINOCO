@@ -1,0 +1,10 @@
+.photo img{
+    display: flex;
+    flex-direction: column;
+    justify-content: center; 
+    margin: 20px auto;
+    width: 750px;
+    height: 535px;
+    border-style: groove;
+    
+}
