@@ -1,10 +1,16 @@
-.photo img{
+#produit p {
     display: flex;
     flex-direction: column;
-    justify-content: center; 
+    align-items: center;
+    color:red;
+    font-size: 30px;
     margin: 20px auto;
-    width: 750px;
+    max-width: 750px;
     height: 535px;
-    border-style: groove;
-    
+    font-family: "Montserrat", sans-serif;
 }
+#produit p img{
+    box-shadow: 10px 5px 5px #616161;    
+}
+
+
