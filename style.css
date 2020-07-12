@@ -1,16 +1,29 @@
-#produit p {
-    display: flex;
-    flex-direction: column;
+#produit li {
+    /*display: flex;
+    flex-direction: row;*/
     align-items: center;
-    color:red;
-    font-size: 30px;
-    margin: 20px auto;
-    max-width: 750px;
-    height: 535px;
+    color:#7B1FA2;
+    font-size: 15px;
+    margin: 20px 30px 30px 20px;
     font-family: "Montserrat", sans-serif;
+    background-color: aquamarine;
+    /*width:200px;
+    height: 100px;*/
+    list-style: none;
 }
-#produit p img{
-    box-shadow: 10px 5px 5px #616161;    
+#produit li img{
+    width: 300px;
+    height: 200px;
+
 }
+ul{
+    display: flex;
+    flex-direction: row;
+    width:600px;
+    height: 300px;
+    padding: 60px;
+}
+
+
 
 
