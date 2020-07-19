@@ -24,6 +24,9 @@ ul{
     padding: 60px;
 }
 
+/*CSS pour pages produits*/
 
-
-
+#description_produit article img{
+    width: 600px;
+    height: 400px; 
+}

@@ -9,17 +9,18 @@ fetch("http://localhost:3000/api/cameras").then(response =>{
     //On crée un élément article
     let produit = document.createElement("article");
             
-    // on récupére l'index de l'image dans code produit.html pour l 'afficher
+    // on récupére l'index de l'image dans code produit.html pour l'afficher
     produit.innerHTML= '<img src='+result[index_produit].imageUrl+'>';
     produit.innerHTML+='<p class=description>'+result[index_produit].description +'</p>';
+       
     
+    // on insére le code précédent dans la balise div produit
+    let photo_produit = document.getElementById('description_produit');           
+    if (photo_produit !== null ){photo_produit.appendChild(produit);}
+
     //séparateur nombre
     let prix = result[index_produit].price;
     produit.innerHTML+='<p class=prix>'+prix.toLocaleString('fr') +' € </p>';
-    
-    // on insére le code précédent dans la balise div produit
-    let photo_produit = document.getElementById('produit');           
-    if (photo_produit !== null ){photo_produit.appendChild(produit);}
 
     console.log(result[0].imageUrl)
     
