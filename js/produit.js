@@ -21,8 +21,16 @@ fetch("http://localhost:3000/api/cameras").then(response =>{
     //séparateur nombre
     let prix = result[index_produit].price;
     produit.innerHTML+='<p class=prix>'+prix.toLocaleString('fr') +' € </p>';
+    
+    //teste
+    produit.innerHTML+='<p class=ajouterpanier> Acheter </p>';
+    localStorage.setItem ("index",index_produit);
+    localStorage.setItem ("quantite","3");
+    produit.innerHTML+=localStorage.getItem("index");
+    produit.innerHTML+=localStorage.getItem("quantite");
+    //console.log (test);
 
-    console.log(result[0].imageUrl)
+    console.log(result[0].imageUrl);
     
 
 
