@@ -3,7 +3,7 @@
         let adresse_url = window.location;
         let url = new URL(adresse_url); 
         index_produit=url.searchParams.get("index");
-        localStorage.setItem ("ref_produit",index_produit);
+        localStorage.setItem ("ref-produit",index_produit);
         quantite=5;
         localStorage.setItem ("quantite",quantite)
         console.log (index_produit);
@@ -17,52 +17,111 @@ fetch("http://localhost:3000/api/cameras").then(response =>{
     let adresse_url = window.location;
     let url = new URL(adresse_url);
     let index_produit = url.searchParams.get("index");
-    
+  //-------------------------------------------------------------------------------------//
+  //################################fiche produit########################################
+  //-------------------------------------------------------------------------------------//    
     //On crée un élément article
     let produit = document.createElement("article");
             
-    // on récupére l'index de l'image dans code produit.html pour l'afficher
+    // on récupére l'index des images-produits dans code produit.html pour l'afficher
     produit.innerHTML= '<img src='+result[index_produit].imageUrl+'>';
-    produit.innerHTML+='<p class=description>'+result[index_produit].description +'</p>';
-       
+    produit.innerHTML+='<p class=nom>'+result[index_produit].name +'</p>';
+    produit.innerHTML+='<p class=description>'+result[index_produit].description +'</p>';  
     
     // on insére le code précédent dans la balise div produit
     let photo_produit = document.getElementById('description_produit');           
     if (photo_produit !== null ){photo_produit.appendChild(produit);}
 
-    //séparateur nombre
+    //séparateur nombre pour le prix et son affichage 
     let prix = result[index_produit].price;
     produit.innerHTML+='<p class=prix>'+prix.toLocaleString('fr') +' € </p>';
     
-
- 
-
-    produit.innerHTML+="<button onclick= panier() >Ajouter au Panier </button>";
     
+//-------------------------------------------------------------------------------------//
+//##########################creation de la liste deroulante############################
+//-----------------------------------------------------------------------------------//  
+   
+   //récupérer les options des lentilles sur le produit
+   let option_lentille= (result[index_produit].lenses);
+   
+   //savoir le nombre de lentille qu'il y a pour chaque produit
+   let nbr_option_lentille=(result[index_produit].lenses).length;
+   
+   //indication de l'emplacement des élements qui vont être ajouté en HTML
+   let liste_deroulante_lentille= document.getElementById("liste_deroulante_lentille");
+   liste_deroulante_lentille.innerHTML = "<option value='' selected>-->choisir sa lentille<--</option>";
+   
+   //création liste déroulante option lentille 
+      
+
+  let  x=0;
+   while(x<nbr_option_lentille){
+       liste_deroulante_lentille.innerHTML += "<option value='"+option_lentille[x]+"'>"+ option_lentille[x]+"</option>";
+      
+   x++;
+   };
+  
+
+  //creation liste deroulante quantite
+let qte= document.getElementById("liste_qte");
+qte.innerHTML = "<option value='' selected>-->0</option>";
+
+y=1;
+while(y<=10){
+  qte.innerHTML += "<option value="+y+">"+y+"</option>";
+
+y++;
+};
+
+
+//-------------------------------------------------------------------------------------//
+//################recuperation nombre quantité et option lentille#####################
+//-----------------------------------------------------------------------------------//
+
+$(document).ready(function(){
+  //Dès qu'une quantite différente est choisie, récupère et affiche sa valeur
+  $("#liste_qte").change(function(){
+      $("span").text($(this).val());
+      qte_selectionner=($(this).val());
+      
+      if (qte_selectionner===undefined){
+        qte_selectionner=qte_selectionner;
+        localStorage.setItem("quantité",qte_selectionner);
+      }else{
+        qte_selectionner===null;
+        localStorage.removeItem(qte_selectionner);
+        qte_selectionner=qte_selectionner;
+        localStorage.setItem("quantité",qte_selectionner);
+        console.log(qte_selectionner);
+      };  
+     
+  });
+  //Dès qu'une option différente est choisie, récupère et affiche sa valeur
+  $("#liste_deroulante_lentille").change(function(){
+    $("span").text($(this).val());
+    option_selectionner=($(this).val());
+
+    if (option_selectionner===undefined){
+      option_selectionner=option_selectionner;
+      localStorage.setItem("option",option_selectionner);
+    }else{
+      option_selectionner===null;
+      localStorage.removeItem(option_selectionner);
+      option_selectionner=option_selectionner;
+      localStorage.setItem("option",option_selectionner);
+      console.log(option_selectionner);
+    };  
    
     
-    //teste
-    produit.innerHTML+='<p class=ajouterpanier> Acheter </p>';
-    /*localStorage.setItem ("index",index_produit);
-    localStorage.setItem ("quantite","3");
-   produit.innerHTML+=localStorage.getItem("index");
-    produit.innerHTML+=localStorage.getItem("quantite");*/
-    //console.log (test);
-
-    //bouton
+      
    
-
-
-    console.log(result[0].imageUrl);
-    
-
-
-    
-
-    
-
-
     
     
-    
+});
+
+//boutton ajouter au panier
+produit.innerHTML+="<button onclick= panier() >Ajouter au Panier </button>";
+
+});
+
 })
