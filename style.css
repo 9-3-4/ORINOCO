@@ -1,14 +1,10 @@
 #produit li {
-    /*display: flex;
-    flex-direction: row;*/
     align-items: center;
     color:#7B1FA2;
     font-size: 15px;
     margin: 20px 30px 30px 20px;
     font-family: "Montserrat", sans-serif;
     background-color: aquamarine;
-    /*width:200px;
-    height: 100px;*/
     list-style: none;
 }
 #produit li img{
@@ -24,9 +20,29 @@ ul{
     padding: 60px;
 }
 
-/*CSS pour pages produits*/
+/*CSS pour page produit*/
 
 #description_produit article img{
     width: 600px;
     height: 400px; 
 }
+td{
+    min-width: 50px;;
+    background-color: #eee;
+    text-align: center;
+    vertical-align: top;
+    padding: 10px;
+}
+
+td.description{
+    width: 400px;
+    text-align: left;
+}
+
+
+/*CSS page panier*/
+img.produit_choisi{
+    width: 80px;
+    height: 60px;
+}
+

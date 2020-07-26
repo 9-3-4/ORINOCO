@@ -1,40 +1,32 @@
 
-    function panier(index_produit,quantite) {
-        let adresse_url = window.location;
-        let url = new URL(adresse_url); 
-        index_produit=url.searchParams.get("index");
-        localStorage.setItem ("ref-produit",index_produit);
-        quantite=5;
-        localStorage.setItem ("quantite",quantite)
-        console.log (index_produit);
-       }
-
 fetch("http://localhost:3000/api/cameras").then(response =>{
     return response.json()
 }).then(result =>{
 
-    //on récupére la valeur ID de l'URL
+    //on récupére la valeur ID de l'URL concernant le produit cliqué
     let adresse_url = window.location;
     let url = new URL(adresse_url);
     let index_produit = url.searchParams.get("index");
+    localStorage.setItem("index",index_produit);
+
   //-------------------------------------------------------------------------------------//
   //################################fiche produit########################################
   //-------------------------------------------------------------------------------------//    
     //On crée un élément article
     let produit = document.createElement("article");
             
-    // on récupére l'index des images-produits dans code produit.html pour l'afficher
+    // on récupére l'index_produit pour l'afficher dans code produit.html
     produit.innerHTML= '<img src='+result[index_produit].imageUrl+'>';
     produit.innerHTML+='<p class=nom>'+result[index_produit].name +'</p>';
     produit.innerHTML+='<p class=description>'+result[index_produit].description +'</p>';  
     
-    // on insére le code précédent dans la balise div produit
+    // on insére les balises img et p, précédente dans la balise div description_produit
     let photo_produit = document.getElementById('description_produit');           
     if (photo_produit !== null ){photo_produit.appendChild(produit);}
 
     //séparateur nombre pour le prix et son affichage 
     let prix = result[index_produit].price;
-    produit.innerHTML+='<p class=prix>'+prix.toLocaleString('fr') +' € </p>';
+    produit.innerHTML+='<p class=prixunitaire>'+prix.toLocaleString('fr') +' € </p>';
     
     
 //-------------------------------------------------------------------------------------//
@@ -64,7 +56,7 @@ fetch("http://localhost:3000/api/cameras").then(response =>{
 
   //creation liste deroulante quantite
 let qte= document.getElementById("liste_qte");
-qte.innerHTML = "<option value='' selected>-->0</option>";
+qte.innerHTML = "<option value='' selected>-->quantité</option>";
 
 y=1;
 while(y<=10){
@@ -120,7 +112,7 @@ $(document).ready(function(){
 });
 
 //boutton ajouter au panier
-produit.innerHTML+="<button onclick= panier() >Ajouter au Panier </button>";
+produit.innerHTML+="<a href='panier.html' >Ajouter au Panier </a>";
 
 });
 
