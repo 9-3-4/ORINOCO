@@ -44,26 +44,21 @@ fetch("http://localhost:3000/api/cameras").then(response =>{
    liste_deroulante_lentille.innerHTML = "<option value='' selected>-->choisir sa lentille<--</option>";
    
    //création liste déroulante option lentille 
-      
-
-  let  x=0;
-   while(x<nbr_option_lentille){
-       liste_deroulante_lentille.innerHTML += "<option value='"+option_lentille[x]+"'>"+ option_lentille[x]+"</option>";
-      
-   x++;
-   };
+    let  x=0;
+      while(x<nbr_option_lentille){
+        liste_deroulante_lentille.innerHTML += "<option value='"+option_lentille[x]+"'>"+ option_lentille[x]+"</option>";
+        x++;
+      };
   
-
   //creation liste deroulante quantite
-let qte= document.getElementById("liste_qte");
-qte.innerHTML = "<option value='' selected>-->quantité</option>";
+  let qte= document.getElementById("liste_qte");
+  qte.innerHTML = "<option value='' selected>-->quantité</option>";
 
-y=1;
-while(y<=10){
-  qte.innerHTML += "<option value="+y+">"+y+"</option>";
-
-y++;
-};
+  let y=1;
+    while(y<=10){
+    qte.innerHTML += "<option value="+y+">"+y+"</option>";
+    y++;
+  };
 
 
 //-------------------------------------------------------------------------------------//
@@ -103,10 +98,7 @@ $(document).ready(function(){
       localStorage.setItem("option",option_selectionner);
       console.log(option_selectionner);
     };  
-   
-    
-      
-   
+
     
     
 });
