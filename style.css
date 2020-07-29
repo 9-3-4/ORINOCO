@@ -1,3 +1,9 @@
+body, html{
+    margin: 0;
+    padding: 0;
+}
+
+
 #produit li {
     align-items: center;
     color:#7B1FA2;
@@ -26,6 +32,12 @@ ul{
     width: 600px;
     height: 400px; 
 }
+
+/*CSS page panier*/
+img.produit_choisi{
+    width: 80px;
+    height: 60px;
+}
 td{
     min-width: 50px;;
     background-color: #eee;
@@ -33,16 +45,44 @@ td{
     vertical-align: top;
     padding: 10px;
 }
-
 td.description{
     width: 400px;
     text-align: left;
 }
-
-
-/*CSS page panier*/
-img.produit_choisi{
-    width: 80px;
-    height: 60px;
+/*popup page panier*/
+.bouton_container{
+	width: 100%;
+	text-align: center;
 }
+
+#formulaire_commande{
+	height: 50px;
+	width: 300px;
+	background-color: #2c3e50;
+	color: #f1c40f;
+	font-size: 20px;
+	border:none;
+	cursor: pointer;
+	margin-top: 100px;
+}
+#modal{
+	height: 300px;
+	width: 90%;
+	background-color: #706fd3;
+	text-align: center;
+	color:#ffb142;
+	position: absolute;
+	top:-400px;
+	left: 35%;
+}
+#commande_valider{
+	height: 50px;
+	width: 300px;
+	background-color: #2c3e50;
+	color: #f1c40f;
+	font-size: 20px;
+	border:none;
+	cursor: pointer;
+}
+
 

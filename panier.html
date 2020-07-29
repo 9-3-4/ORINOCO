@@ -6,18 +6,31 @@
     <title>Panier</title>
 </head>
 <body>
-    <table id="commande_produit">
-
-    </table>
-   <!--<div id="commande_produit">
-
-
-
-    </div>--> 
-
-
-
+	<!--<table id="commande_produit"></table>-->
+	<div id="commande_produit"></div>
+    <div class="bouton_container">
+    	<button id="formulaire_commande" onclick="openmodal();"> commander </button>
+    </div>
     
-    <script src="./js/panier.js"></script> 
+    <div id="modal">
+    	<form class="formulaire" methode="GET" action="commande.html">
+    		<label>Nom<br></label>
+  				<input type="text" name="cf_name"><br>
+			<label>Prénom<br></label>
+  				<input type="text" name="cf_prenom"><br>
+			<label>Adresse<br></label>
+  				<input type="text" name="cf_adresse"><br>
+  			<label>Code postal<br></label>
+				<input type="text" name="cf_codepostal"><br>
+  			<label>adresse mail<br></label>
+  			    <input type="text" name="cf_email"><br>
+  			<input type="submit" value="Acheter" name="Acheter" id="commande_valider" onclick="closemodal()">
+  		</form>
+    </>
+
+
+    <script src="./js/modal.js"></script>
+	<script src="./js/panier.js"></script>
+	
 </body>
 </html>
