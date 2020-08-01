@@ -19,7 +19,7 @@ fetch("http://localhost:3000/api/cameras").then(response =>{
         let balise_img = document.createElement("li");
             
         // on récupére l'index de l'image dans code index.html pour l 'afficher
-        balise_img.innerHTML= result[index_image].name+'<a href="produit.html?index='+index_image+'"> <img src ='+result [index_image].imageUrl+'></a>';
+        balise_img.innerHTML= result[index_image].name+'<a href="produit.html?index='+index_image+'"> <img class="camera" src ='+result [index_image].imageUrl+'></a>';
             
         // on insére le code précédent dans la balise liste produit
         let photo_produit = document.getElementById('produit');           

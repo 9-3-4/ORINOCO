@@ -79,7 +79,6 @@ $(document).ready(function(){
         localStorage.removeItem(qte_selectionner);
         qte_selectionner=qte_selectionner;
         localStorage.setItem("quantité",qte_selectionner);
-        console.log(qte_selectionner);
       };  
      
   });
@@ -96,10 +95,9 @@ $(document).ready(function(){
       localStorage.removeItem(option_selectionner);
       option_selectionner=option_selectionner;
       localStorage.setItem("option",option_selectionner);
-      console.log(option_selectionner);
     };  
 
-    
+   
     
 });
 
