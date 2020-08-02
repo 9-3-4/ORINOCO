@@ -32,7 +32,24 @@ ul.slide{
 
 #description_produit article img{
     width: 600px;
-    height: 400px; 
+    height: 400px;
+    margin: 15px; 
+    float: left;
+}
+p.description{
+    background-color: coral;
+    width: 40%;
+    margin: 10px;
+    float: right;
+}
+p.nom{
+    background-color: crimson;
+    position: absolute;
+    top: 10;
+    left: 30px;
+}
+a{
+    clear:both;
 }
 
 /*CSS page panier*/

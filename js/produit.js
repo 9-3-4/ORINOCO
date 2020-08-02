@@ -18,7 +18,7 @@ fetch("http://localhost:3000/api/cameras").then(response =>{
     // on récupére l'index_produit pour l'afficher dans code produit.html
     produit.innerHTML= '<img src='+result[index_produit].imageUrl+'>';
     produit.innerHTML+='<p class=nom>'+result[index_produit].name +'</p>';
-    produit.innerHTML+='<p class=description>'+result[index_produit].description +'</p>';  
+    produit.innerHTML+='<p class=description>'+result[index_produit].description ;  
     
     // on insére les balises img et p, précédente dans la balise div description_produit
     let photo_produit = document.getElementById('description_produit');           
@@ -26,7 +26,7 @@ fetch("http://localhost:3000/api/cameras").then(response =>{
 
     //séparateur nombre pour le prix et son affichage 
     let prix = result[index_produit].price;
-    produit.innerHTML+='<p class=prixunitaire>'+prix.toLocaleString('fr') +' € </p>';
+    produit.innerHTML+='<p class=prixunitaire>'+prix.toLocaleString('fr') +' €</p>';
     
     
 //-------------------------------------------------------------------------------------//
@@ -66,7 +66,7 @@ fetch("http://localhost:3000/api/cameras").then(response =>{
 //-----------------------------------------------------------------------------------//
 
 $(document).ready(function(){
-  //Dès qu'une quantite différente est choisie, récupère et affiche sa valeur
+  //Dès qu'une quantite différente est choisie, récupère et affiche sa valeur (jquery)
   $("#liste_qte").change(function(){
       $("span").text($(this).val());
       qte_selectionner=($(this).val());
@@ -96,14 +96,27 @@ $(document).ready(function(){
       option_selectionner=option_selectionner;
       localStorage.setItem("option",option_selectionner);
     };  
-
-   
     
-});
+});//fin function change jquery
+
 
 //boutton ajouter au panier
-produit.innerHTML+="<a href='panier.html' >Ajouter au Panier </a>";
+produit.innerHTML+="<a id=ajoutaupanier href='panier.html' >Ajouter au Panier </a>";
+
+$("#ajoutaupanier").click(function(){
+
+if (liste_deroulante_lentille===undefined){
+
+}else{
+  alert ("mettre une option");
+}
+
+})//fin function click jquery
+
 
 });
+
+
+
 
 })
