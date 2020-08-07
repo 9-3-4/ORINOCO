@@ -1,0 +1,137 @@
+font-family: 'Ubuntu', sans-serif;
+font-family: 'Mulish', sans-serif;
+
+header img{
+	display: inline-block;
+}
+header nav{
+	display: inline-block;
+	float: right;
+}
+h1{
+	font-family:ubuntu;
+}
+div#catalogue{
+	width: auto;
+	margin: 0 auto;
+}
+article{
+	display:inline-block;
+}
+article.catalogue_produit{
+	width: 20%;
+	max-width:250px;
+	background-color:#fff;
+	display:inline-block;
+	margin:5px;
+	border:1px solid #ddd;
+	font-family:ubuntu;
+	
+}
+span.titre_catalogue{
+	font-variant:small-caps;
+	font-weight:bold;
+}
+p.resume_description{
+	margin: 5px;
+}
+footer.footer_catalogue{
+	margin: 10px;
+	text-align:center;
+}
+.btn_plus-dinfo {
+	padding:3px;
+	background:#6fc;
+	color:#555;
+	border-radius:2px;
+	border:1px solid #ccc;
+	box-shadow:1px 1px 3px #999;
+	width:170px;
+	font-size:11px;
+	margin-right:5px;
+}
+.btn_ajouter_panier {
+	padding:3px;
+	background:#6fc;
+	color:#555;
+	border-radius:2px;
+	border:1px solid #ccc;
+	box-shadow:1px 1px 3px #999;
+	width:100px;
+	font-size:11px;
+	
+}
+#produit{
+	background-color: #fff;
+	box-shadow: 1px 1px 12px #555;
+	min-height: 260px;
+}
+#img_description{
+	display: inline-block;
+}
+#texte_description{
+	display: inline-block;
+	position: absolute;
+	margin-left: 10px;
+	width: 450px;
+}
+#texte_description h2{
+	margin: 0;
+	padding: 0;
+	font-family:"ubuntu";
+}
+#texte_description p{
+	font-family: 'Mulish', sans-serif;
+	font-size:22px;
+	text-align: justify;
+	margin-top: 5px;
+}
+#bouton{
+	text-align: right;
+	margin-top: 10px;
+}
+fieldset{
+	border: 1px solid #ddd;
+}
+legend{
+	font-family: 'Mulish';
+}
+button.option_lentille{
+	/*border-radius:50%;*/
+	height: 50px;
+	width: 110px;
+	border: 1px solid #bbb;
+	background-color: #eee;
+	margin-right:10px;
+	font-size: 12px;
+	padding: 0 5px;
+	margin-left: 10px;
+}
+#texte_description p.lentille_sans_option{
+	font-size: 17px;
+	font-weight: bold;
+	text-decoration: underline;
+
+}
+fieldset.panier{
+	width: 40%;
+}
+legend{
+	font-variant: small-caps;
+	font-family: Ubuntu;
+	font-size: 30px;
+	color: #999;
+}
+th {
+  background-color: #FB6;
+  color: white;
+  font-family: 'Mulish';
+  font-size: 18px;
+}
+td{
+	padding: 5px;
+	font-family: 'Mulish';
+	background-color: #eee;
+	font-size: 18px;
+}
+
