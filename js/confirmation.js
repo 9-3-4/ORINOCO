@@ -1,3 +1,4 @@
+//fonction pour récupéreration de l'url en synchrone
 function lire_fichier_json(file, callback) {
     var fichier_json = new XMLHttpRequest();
     fichier_json.overrideMimeType("application/json");
@@ -9,4 +10,3 @@ function lire_fichier_json(file, callback) {
     }
     fichier_json.send(null);
 }
-let url_api = "http://localhost:3000/api/cameras";

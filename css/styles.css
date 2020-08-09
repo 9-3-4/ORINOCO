@@ -1,6 +1,4 @@
-font-family: 'Ubuntu', sans-serif;
-font-family: 'Mulish', sans-serif;
-
+/*page index*/
 header img{
 	display: inline-block;
 }
@@ -9,7 +7,7 @@ header nav{
 	float: right;
 }
 h1{
-	font-family:ubuntu;
+	font-family:ubuntu,sans-serif;
 }
 div#catalogue{
 	width: auto;
@@ -93,9 +91,7 @@ footer.footer_catalogue{
 fieldset{
 	border: 1px solid #ddd;
 }
-legend{
-	font-family: 'Mulish';
-}
+
 button.option_lentille{
 	/*border-radius:50%;*/
 	height: 50px;
@@ -113,8 +109,10 @@ button.option_lentille{
 	text-decoration: underline;
 
 }
-fieldset.panier{
-	width: 40%;
+/*CSS panier***************************************************************************************/
+div#panier{
+	float:left;
+	width: 55%
 }
 legend{
 	font-variant: small-caps;
@@ -135,3 +133,186 @@ td{
 	font-size: 18px;
 }
 
+
+div.clear{
+	clear: both;
+}
+
+
+td.cellule_prix_total{
+text-align: right;
+font-style: italic;
+}
+td.somme_total_panier{
+	background-color: #FB6;
+	text-align: center;
+	font-weight: bold;
+}
+div#formulaire fieldset form p{
+	margin: 0;
+	padding: 0;
+	line-height: 35px;
+}
+.poubelle{
+	cursor: pointer;
+}
+td.col_poubelle{
+	background-color: #fff;
+}
+.img_panier_vide,.img_description_vide{
+	float: left;
+
+}
+
+.panier_vide,.aucun_produit_selectionne{
+	display: inline-block;
+	float: left;
+	text-align: center;
+	vertical-align: middle;
+	font-size: 20px;
+	margin-top:70px;
+	font-family: 'Raleway', sans-serif;
+}
+#article_description_manquante p {
+	font-family: 'Raleway', sans-serif;
+	font-size: 40px;
+	text-align: center;
+}
+#article_description_manquante p img{
+	vertical-align: middle;
+}
+#article_description_manquante p span{
+font-size: 25px;
+}
+#article_description_manquante p span a, .panier_vide a{
+text-decoration: none;
+color: #666;
+}
+
+
+
+
+/*CSS FORMULAIRE DE CONTACT*/
+
+div.containerFormulaire {
+	display: inline-block;
+    width: 35%;
+    margin-left: 25px;
+  }
+  
+  #contact input[type="text"],
+  #contact input[type="email"],
+  #contact input[type="number"],
+  /*#contact input[type="url"],*/
+  #contact textarea,
+  #contact-submit{
+    font: 400 12px/16px "Roboto", Helvetica, Arial, sans-serif;
+  }
+  
+  #contact {
+    background: #F9F9F9;
+    padding: 25px;
+    margin: 0px 0;
+    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+    border: solid 4px #FB6;
+  }
+  
+  #contact h3 {
+    display: block;
+    font-size: 20px;
+    font-weight: 30px;
+    margin-bottom: 10px;
+  }
+  
+  fieldset {
+    border: medium none !important;
+    margin: 0 0 10px;
+    min-width: 100%;
+    padding: 0;
+    width: 100%;
+    font-size: 30px;
+  }
+  
+  #contact input[type="text"],
+  #contact input[type="email"],
+  #contact input[type="number"],
+  /*#contact input[type="url"],*/
+  #contact textarea {
+    width: 100%;
+    border: 1px solid #ccc;
+    background: #FFF;
+    margin: 0 0 5px;
+    padding: 10px;
+  }
+  
+  #contact input[type="text"]:hover,
+  #contact input[type="email"]:hover,
+  #contact input[type="number"]:hover,
+  /*#contact input[type="url"]:hover,*/
+  #contact textarea:hover {
+    -webkit-transition: border-color 0.3s ease-in-out;
+    -moz-transition: border-color 0.3s ease-in-out;
+    transition: border-color 0.3s ease-in-out;
+    border: 1px solid #aaa;
+  }
+  
+  #contact textarea {
+    height: 100px;
+    max-width: 100%;
+    resize: none;
+  }
+  
+  #contact-submit {
+    cursor: pointer;
+    width: 100%;
+    border: none;
+    background: #FB6;
+    color: #FFF;
+    margin: 0 0 5px;
+    padding: 10px;
+    font-size: 15px;
+    transition: background-color 1s ease-out;
+  }
+  
+  #contact-submit:hover{
+    background: #47b6ff;
+  }
+  
+  /*#contact-submit:active {
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.5);
+  }*/
+
+  #contact input:focus,
+  #contact textarea:focus {
+    outline: 0;
+    border: 1px solid #aaa;
+  }
+  
+  ::-webkit-input-placeholder {
+    color: #888;
+  }
+  
+  :-moz-placeholder {
+    color: #888;
+  }
+  
+  ::-moz-placeholder {
+    color: #888;
+  }
+  
+  :-ms-input-placeholder {
+    color: #888;
+  }
+
+
+
+
+/*div#formulaire{
+float: right;
+	width: 40%;
+}
+label.label_formulaire{
+	width: 90px;
+	display: inline-block;
+
+}*/
