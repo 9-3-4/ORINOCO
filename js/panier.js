@@ -21,7 +21,25 @@ fetch("http://localhost:3000/api/cameras")
             var liste_produit = Promise.resolve(fichier_json);
             console.log(liste_produit);
 
-            
+            //Création du tableau de produit dans div panier
+            var panier = document.getElementById('panier');
+
+            //afficher seulement la valeur du tableau (array du json)
+            liste_produit.then((valeur) => {
+
+                //trouver dans les valeurs la ligne id_produit
+                var choix_appareil_photo = valeur.find(appareil_photo => appareil_photo._id === id_produit);
+
+               // Création du code HTML
+               panier.innerHTML = '<article><h2 class="panier_name">' + choix_appareil_photo.name + '</h2><div class="panier_photo"><img src="' + choix_appareil_photo.imageUrl + '"></div><p class="panier_prix"> ' + choix_appareil_photo.price + ' &#x20AC </p></artticle > ';
+
+
+            });
+
+
+
+
+
 
 
         });//fin fetch
