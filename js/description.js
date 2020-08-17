@@ -1,3 +1,6 @@
+//boucle
+let panier = localStorage.getItem('panier') ? JSON.parse(localStorage.getItem('panier')) : []
+
 //récupération de la valeur de l'option lentille selectionner pour l'afficher dans l'url
 function passer_commande(id_produit) {
      
@@ -8,8 +11,11 @@ function passer_commande(id_produit) {
     if (option_lentille === "Selectionner une lentille") {
        alert("Oups ! Vous avez oublie de selectionner l'option lentille");
     }
-    else {   
-    window.location = 'panier.html?id_produit=' + id_produit + '&option=' + option_lentille;
+    else { 
+     //stocker dans le localstorage
+        panier.push({ id : id_produit, lentille: option_lentille });
+        localStorage.setItem('panier', JSON.stringify(panier));
+        window.location = 'panier.html';
     } 
 }
 
@@ -48,7 +54,18 @@ fetch("http://localhost:3000/api/cameras")
                 liste_deroulante_option += '</select>';
                                               
                 // Création du code HTML
-                description.innerHTML = '<article><h2 class="description_name">' + information_appareil_photo.name + '</h2><div class="description_photo"><img src="' + information_appareil_photo.imageUrl + '"></div><div class="description_selectionne"><p>' + information_appareil_photo.description + '</p></div>' + liste_deroulante_option + '<p class="description_prix"> ' + information_appareil_photo.price + ' &#x20AC </p> <button class="btn_ajouter_panier" onclick="passer_commande(\''+id_produit+'\')">Commander</button> </artticle > ';
+                description.innerHTML = `<article>
+                                            <h2 class="description_name">${ information_appareil_photo.name}</h2>
+                                            <div class="description_photo">
+                                                <img src="${information_appareil_photo.imageUrl}">
+                                            </div>
+                                            <div class="description_selectionne">
+                                                <p>${information_appareil_photo.description }</p>
+                                            </div>
+                                            ${liste_deroulante_option}
+                                            <p class="description_prix">${information_appareil_photo.price} &#x20AC </p>
+                                            <button class="btn_ajouter_panier" onclick="passer_commande(\''+id_produit+'\')">Commander</button>
+                                        </article > `;
                               
             });
 

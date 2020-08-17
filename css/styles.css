@@ -96,7 +96,7 @@ p.description_prix {
     bottom: 270px;
     left:170%;
     padding:15px;
-    border: 1px solid #aaa
+    border: 1px solid #aaa;
 }
 .btn_ajouter_panier:hover {
     background: #5c4f74;
