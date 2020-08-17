@@ -1,10 +1,16 @@
 //récupération de la valeur de l'option lentille selectionner pour l'afficher dans l'url
 function passer_commande(id_produit) {
-    choix_valider = document.getElementsByClassName("description_option");
-    console.log(choix_valider[0].value);
-    var option_lentille = choix_valider[0].value;
+     
+     choix_valider = document.getElementsByClassName("description_option");
+        var option_lentille = choix_valider[0].value;
+
+    //message alert si option non sélectionner
+    if (option_lentille === "Selectionner une lentille") {
+       alert("Oups ! Vous avez oublie de selectionner l'option lentille");
+    }
+    else {   
     window.location = 'panier.html?id_produit=' + id_produit + '&option=' + option_lentille;
-    
+    } 
 }
 
 //récupération de l'url avec une seule donnée, l'ID
