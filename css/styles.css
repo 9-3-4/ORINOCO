@@ -25,7 +25,7 @@ html,body{
 
 /******CSS CATALOGUE DE LA PAGE INDEX******/
 #catalogue {
-   grid-area: 2 / 1 / 3 / 3;
+    grid-area: 2 / 1 / 3 / 3;
     display:grid;
     grid-template-columns: repeat(3, 1fr);
     text-align:center;
@@ -104,6 +104,16 @@ p.description_prix {
 
 /******CSS PAGE PANIER******/
 
+.containergrid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: 1fr;
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
+}
+.panier {
+    grid-area: 1 / 1 / 2 / 2;
+}
 
 
 
@@ -111,4 +121,107 @@ p.description_prix {
 
 
 
+/******CSS FORMULAIRE DE CONTACT******/
 
+div.containerFormulaire {
+    grid-area: 1 / 2 / 2 / 3;
+    display: inline-block;
+    width: 70%;
+    margin-left: 10%; 
+    text-align:center;
+}
+
+#contact input[type="text"],
+#contact input[type="email"],
+#contact input[type="number"],
+#contact textarea,
+#contact-submit {
+    font: 400 12px/16px "Roboto", Helvetica, Arial, sans-serif;
+}
+
+#contact {
+    background: #F9F9F9;
+    padding: 10px;
+    margin: 0px 0;
+    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+    border: solid 4px coral;
+}
+
+#contact h3 {
+    display: block;
+    font-size: 15px;
+    margin-bottom: 10px;
+}
+
+fieldset {
+    border: medium none !important;
+    margin: 0 0 10px;
+    min-width: 100%;
+    padding: 0;
+    width: 100%;
+    font-size: 20px;
+}
+
+#contact input[type="text"],
+#contact input[type="email"],
+#contact input[type="number"],
+#contact textarea {
+    width: 76%;
+    border: 1px solid #ccc;
+    background: #FFF;
+    margin: 0;
+    padding: 8px;
+}
+#contact input[type="text"]:hover,
+#contact input[type="email"]:hover,
+#contact input[type="number"]:hover
+#contact textarea:hover {
+    -webkit-transition: border-color 0.3s ease-in-out;
+    -moz-transition: border-color 0.3s ease-in-out;
+     transition: border-color 0.3s ease-in-out;
+     border: 1px solid #aaa;
+}
+
+#contact textarea {
+    height: 100px;
+    max-width: 100%;
+    resize: none;
+}
+
+#contact-submit {
+    cursor: pointer;
+    width: 35%;
+    border: none;
+    background: coral;
+    color: #FFF;
+    margin: 0;
+    padding: 8px;
+    font-size: 15px;
+    transition: background-color 1s ease-out;
+}
+
+#contact-submit:hover {
+    background: #5c4f74;
+}
+
+#contact input:focus,
+#contact textarea:focus {
+    outline: 0;
+    border: 1px solid #aaa;
+}
+
+::-webkit-input-placeholder {
+    color: #888;
+}
+
+:-moz-placeholder {
+    color: #888;
+}
+
+::-moz-placeholder {
+    color: #888;
+}
+
+:-ms-input-placeholder {
+    color: #888;
+}

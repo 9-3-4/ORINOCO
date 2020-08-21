@@ -14,19 +14,38 @@
         <nav class="div2">
             <a class="navigation_accueil" href="index.html"><img src="./images/accueil.png" height="34" width="34"></a>
             <a class="navigation_panier" href="panier.html"><img src="./images/panier.png" height="30" width="30"></a>
-        </nav>
-        
-        <h1>Votre panier</h1>
-    <div id="panier"></div>
-    
-        </div><!--fin parent-->
-
-    
-
-
-
-
-
+        </nav>      
+    </div><!--fin parent-->
+    <div class="containergrid">
+        <div id="panier"></div>
+        <div class="containerFormulaire">
+            <form id="contact" action="confirmation.html" method="post">
+                <fieldset>
+                    <legend>Formulaire de commande</legend>
+                    <h3>Merci de remplir ce formulaire pour finaliser votre achat!!!</h3>
+                    <input placeholder="Prénom" type="text" tabindex="1" required autofocus>
+                </fieldset>
+                <fieldset>
+                    <input placeholder="Nom" type="text" tabindex="2" required>
+                </fieldset>
+                <fieldset>
+                    <textarea placeholder="Adresse" rows="2" type="text" tabindex="3" required></textarea>
+                </fieldset>
+                <fieldset>
+                    <input pattern="[0-9]{5}" placeholder="Code postal" type="text" tabindex="4" required>
+                </fieldset>
+                <fieldset>
+                    <input placeholder="Ville" type="text" tabindex="5" required>
+                </fieldset>
+                <fieldset>
+                    <input placeholder="Email:exemple@domaine.com" type="email" tabindex="6" required>
+                </fieldset>
+                <fieldset>
+                    <input name="submit" type="submit" id="contact-submit" data-submit="...Sending">
+                </fieldset>
+            </form>
+        </div><!--fin containerFormulaire-->
+    </div><!--fin containergrid-->
 
 
     <script src="./js/panier.js"></script>

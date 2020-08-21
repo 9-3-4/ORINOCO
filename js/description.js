@@ -1,5 +1,5 @@
 //boucle
-let panier = localStorage.getItem('panier') ? JSON.parse(localStorage.getItem('panier')) : []
+let panier = localStorage.getItem('panier') ? JSON.parse(localStorage.getItem('panier')):[]
 
 //récupération de la valeur de l'option lentille selectionner pour l'afficher dans l'url
 function passer_commande(id_produit) {
