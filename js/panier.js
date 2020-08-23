@@ -1,22 +1,18 @@
+//fonction pour onclick pour supprimer des produits 
+function poubelle(ligne) {
+    tableau_commande = JSON.parse(localStorage.getItem('panier'));
+    ligne_a_supprimer = tableau_commande[ligne];
 
-function poubelle(id_produit_supprimer) {
-    liste_commande = JSON.parse(localStorage.getItem('panier'))
-    delete liste_commande[id_produit_supprimer];
-    maj_panier = JSON.stringify(liste_commande);
-    console.log(maj_panier);
-    if (id_produit_supprimer == 0) {
-        maj_panier = (maj_panier.replace(null, '')).replace(',', '');
-        localStorage.setItem('panier', maj_panier);
-        //location.reload();
-    } 
-    
-
-   // location.reload();
-
-    console.log(liste_commande.count);
-   
- }
-
+    //MAJ PANIER : creation du nouveau panier dans localStoage en excluant l'élèment cliquer
+    var panier_maj = [];
+    tableau_commande.forEach(element => {
+        if (element !== ligne_a_supprimer) {
+            panier_maj.push(JSON.stringify(element));           
+        }         
+    });
+    localStorage.setItem('panier', `[${panier_maj}]`);   
+    location.reload();
+}
 //récupération de l'url avec une seule donnée, l'ID
 id_produit = (window.location.search.substr(1).split('id_produit='))[1];
 
@@ -58,32 +54,25 @@ fetch("http://localhost:3000/api/cameras")
 
                     ligne++;
                     prix_total = prix_total + choix_appareil_photo.price;
-
-                    
-                 
-
-                  
+               
 
                 })
 
 
-                // Création du code HTML pour afficher le tableau
-                panier.innerHTML += `<table>${titre_tableau} ${ligne_tableau} <tr><td colspan="3">Prix total: <td>${prix_total} &#x20AC</td></tr></table>`;
-               
+                // Création du code HTML pour afficher le tableau ou boucle si panier vide avec desactivation du formulaire
+                if (JSON.parse(localStorage.getItem('panier')).length == 0) {
+                    panier.innerHTML = "<h1> Oh non !!! le panier est vide !!!</h1>";
+                    document.getElementById("contact-submit").disabled = true;
+                } else {
+                    panier.innerHTML += `<table>${titre_tableau} ${ligne_tableau} <tr><td colspan="3">Prix total: <td>${prix_total} &#x20AC</td></tr></table>`;
+                    
+                }
+
+
                 
 
 
-
-
-
-
-
             });
-
-
-
-
-
 
 
         });//fin fetch

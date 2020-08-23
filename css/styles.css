@@ -102,8 +102,7 @@ p.description_prix {
     background: #5c4f74;
 }
 
-/******CSS PAGE PANIER******/
-
+/******CSS PANIER******/
 .containergrid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -203,7 +202,9 @@ fieldset {
 #contact-submit:hover {
     background: #5c4f74;
 }
-
+#contact-submit:disabled {
+    background: #dddddd;
+}
 #contact input:focus,
 #contact textarea:focus {
     outline: 0;
