@@ -76,3 +76,69 @@ fetch("http://localhost:3000/api/cameras")
 
 
         });//fin fetch
+
+//traite le formulaire des le submit 
+document.getElementById('contact').addEventListener('submit', (e) => {
+    /**
+     * contenu du formulaire prevu par la demande
+     * contact:{
+     * firstName:string,
+     * lastName:string,
+     * address:string,
+     * city:string,
+     * email:string
+     * }
+     * produtc:[string]<--array of product_id
+     * 
+     **/
+
+    e.preventDefault();
+
+    //recupère les données du formulaire
+    let form = new FormData(document.getElementById('contact'));
+    let contact = validateFormReturningContact(form);
+    if (contact !== false){
+        const products = JSON.parse(localStorage.getItem('panier')).map(elt => elt.id);
+        const sendOrder = { contact, products }
+        console.log(sendOrder);
+
+        //pour envoie du formulaire
+        fetch("http://localhost:3000/api/cameras/order", {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(sendOrder)
+        }).then(response => response.json())
+            .then(result => { console.log(result) });
+    } else {
+        console.log("erreur dans le formulaire")
+    } 
+})
+//vérification des champs
+function validateFormReturningContact(form) {
+    const contact = {};
+    let valid = true
+    let errors = [];
+    if (!validateString(form.get('prenom'))) {  valid = false; errors.push ("Le prénom n'est pas correct")}
+    if (!validateString(form.get('nom'))) { valid = false; errors.push("Le nom n'est pas correct") }
+    if (valid) {
+        contact.firstName = form.get('prenom');
+        contact.lastName = form.get('nom');
+        contact.address = form.get('adresse');
+        contact.city = `${form.get('code_postal')} ${form.get('ville')}`;
+        contact.email = form.get('email');
+        return contact
+    } else {
+        return false
+    }
+    
+    function validateEmail(email) {
+        const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+        return re.test(String(email).toLowerCase());
+    }
+
+    function validateString(string) {
+        const re = /[a-zA-Z\S0-9]{2,}/
+        return re.test(string);
+    }
+
+}
