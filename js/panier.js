@@ -29,10 +29,10 @@ fetch("http://localhost:3000/api/cameras")
             //gestion du tableau du panier avec prix total
             var ligne_tableau = '';
             let titre_tableau = `<tr>
-                                    <th>Photo</th>
-					                <th>Nom</th> 
-					                <th>Description</th>
-					                <th>Prix</th>`;
+                                    <th class="photo_produit">Photo</th>
+					                <th class="nom_produit">Nom</th> 
+					                <th class="lentille_produit">Lentille</th>
+					                <th class="prix_produit">Prix</th>`;
             var prix_total = 0;
             var ligne = 0;
 
@@ -45,37 +45,31 @@ fetch("http://localhost:3000/api/cameras")
 
                     // Creation du tableau pour afficher le choix d'article avec prix total
                     ligne_tableau +=    `<tr class="commande"> 
-                                        <td><img src="${choix_appareil_photo.imageUrl}" width= "150"></td>
+                                        <td><img src="${choix_appareil_photo.imageUrl}" width= "70%"></td>
 			                            <td>${choix_appareil_photo.name}</td> 
-			                            <td>Lentille: ${produit.lentille}</td> 
+			                            <td>${produit.lentille}</td> 
 			                            <td>${choix_appareil_photo.price} &#x20AC</td> 
-			                            <td><img src="./images/panier_supprimer.png" width="25" onclick= poubelle("${ligne}")></td>
+			                            <td><img src="./images/panier_supprimer.png" width="30" onclick= poubelle("${ligne}")></td>
 			                            </tr>`;
 
                     ligne++;
                     prix_total = prix_total + choix_appareil_photo.price;
-               
-
+                    localStorage.setItem('totaux_commande', prix_total);
                 })
-
 
                 // Création du code HTML pour afficher le tableau ou boucle si panier vide avec desactivation du formulaire
                 if (JSON.parse(localStorage.getItem('panier')).length == 0) {
-                    panier.innerHTML = "<h1> Oh non !!! le panier est vide !!!</h1>";
+                    //panier.innerHTML = "<img src="./ images / panier_vide.png"> <h1> Oh non !! votre panier est vide,</br> allez &agrave; la page d'accueil !</h1>";
+                    panier.innerHTML= '<p class="aucun_produit"><img class="aucun_article" src="./images/pas_article.png" width="20%"><span class="panier_vide">Votre panier est tristement vide !!<br> <a href="index.html">Consulter notre catalogue en ligne</a></span></p>';
+
                     document.getElementById("contact-submit").disabled = true;
                 } else {
-                    panier.innerHTML += `<table>${titre_tableau} ${ligne_tableau} <tr><td colspan="3">Prix total: <td>${prix_total} &#x20AC</td></tr></table>`;
+                    panier.innerHTML += `<table>${titre_tableau} ${ligne_tableau} <tr><td class="prix_produit" colspan="3">Prix total: <td class="total_produit">${prix_total} &#x20AC</td></tr></table>`;
                     
                 }
-
-
-                
-
-
             });
 
-
-        });//fin fetch
+        });//fin fetch 
 
 //traite le formulaire des le submit 
 document.getElementById('contact').addEventListener('submit', (e) => {
@@ -108,18 +102,26 @@ document.getElementById('contact').addEventListener('submit', (e) => {
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(sendOrder)
         }).then(response => response.json())
-            .then(result => { console.log(result) });
+            .then(result => {
+                console.log((result.contact).firstName);
+                console.log((result.contact).lastName);
+                console.log(result.orderId);
+            });
     } else {
-        console.log("erreur dans le formulaire")
+        console.log("erreur dans le formulaire");
+
     } 
+    
+   
 })
-//vérification des champs
+
+//vérification des champs du formulaire
 function validateFormReturningContact(form) {
     const contact = {};
     let valid = true
     let errors = [];
-    if (!validateString(form.get('prenom'))) {  valid = false; errors.push ("Le prénom n'est pas correct")}
-    if (!validateString(form.get('nom'))) { valid = false; errors.push("Le nom n'est pas correct") }
+    if (!validateString(form.get('prenom'))) {  valid = false; errors.push ("Prénom incorrect")}
+    if (!validateString(form.get('nom'))) { valid = false; errors.push("Nom incorrect") }
     if (valid) {
         contact.firstName = form.get('prenom');
         contact.lastName = form.get('nom');
@@ -141,4 +143,8 @@ function validateFormReturningContact(form) {
         return re.test(string);
     }
 
+
 }
+
+
+
