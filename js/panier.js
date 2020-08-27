@@ -82,8 +82,7 @@ document.getElementById('contact').addEventListener('submit', (e) => {
      * city:string,
      * email:string
      * }
-     * produtc:[string]<--array of product_id
-     * 
+     * produtc:[string]<--array of product_id 
      **/
 
     e.preventDefault();
@@ -106,13 +105,14 @@ document.getElementById('contact').addEventListener('submit', (e) => {
                 console.log((result.contact).firstName);
                 console.log((result.contact).lastName);
                 console.log(result.orderId);
+                localStorage.setItem('numero_commande', result.orderId);
+                localStorage.setItem('prenom', (result.contact).firstName);
+                localStorage.setItem('nom', (result.contact).lastName);
             });
     } else {
         console.log("erreur dans le formulaire");
 
     } 
-    
-   
 })
 
 //vérification des champs du formulaire
@@ -128,7 +128,9 @@ function validateFormReturningContact(form) {
         contact.address = form.get('adresse');
         contact.city = `${form.get('code_postal')} ${form.get('ville')}`;
         contact.email = form.get('email');
+        if (valid = true) { window.location = 'confirmation.html' }
         return contact
+
     } else {
         return false
     }
@@ -142,8 +144,6 @@ function validateFormReturningContact(form) {
         const re = /[a-zA-Z\S0-9]{2,}/
         return re.test(string);
     }
-
-
 }
 
 

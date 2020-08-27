@@ -147,7 +147,7 @@ div.containerFormulaire {
     grid-area: 1 / 2 / 2 / 3;
     /*display: inline-block;*/
     width: 70%;
-    margin: 5% auto auto 20%; 
+    margin: 5% auto 6% 20%; 
     text-align:center;
 }
 #contact input[type="text"],
