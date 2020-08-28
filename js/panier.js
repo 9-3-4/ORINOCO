@@ -1,4 +1,4 @@
-//fonction pour onclick pour supprimer des produits 
+//fonction pour onclick pour supprimer des produits
 function poubelle(ligne) {
     tableau_commande = JSON.parse(localStorage.getItem('panier'));
     ligne_a_supprimer = tableau_commande[ligne];
@@ -38,13 +38,14 @@ fetch("http://localhost:3000/api/cameras")
 
             //afficher seulement la valeur du tableau (array du json)
             liste_produit.then((valeur) => {
-                JSON.parse(localStorage.getItem('panier')).forEach(produit => {
+                if (localStorage.getItem('panier')) {//La valeur panier existe
+                    JSON.parse(localStorage.getItem('panier')).forEach(produit => {
 
-                    //trouver dans les valeurs la ligne id_produit
-                    var choix_appareil_photo = valeur.find(appareil_photo => appareil_photo._id === produit.id);
+                        //trouver dans les valeurs la ligne id_produit
+                        var choix_appareil_photo = valeur.find(appareil_photo => appareil_photo._id === produit.id);
 
-                    // Creation du tableau pour afficher le choix d'article avec prix total
-                    ligne_tableau +=    `<tr class="commande"> 
+                        // Creation du tableau pour afficher le choix d'article avec prix total
+                        ligne_tableau += `<tr class="commande"> 
                                         <td><img src="${choix_appareil_photo.imageUrl}" width= "70%"></td>
 			                            <td>${choix_appareil_photo.name}</td> 
 			                            <td>${produit.lentille}</td> 
@@ -52,20 +53,26 @@ fetch("http://localhost:3000/api/cameras")
 			                            <td><img src="./images/panier_supprimer.png" width="30" onclick= poubelle("${ligne}")></td>
 			                            </tr>`;
 
-                    ligne++;
-                    prix_total = prix_total + choix_appareil_photo.price;
-                    localStorage.setItem('totaux_commande', prix_total);
-                })
+                        ligne++;
+                        prix_total = prix_total + choix_appareil_photo.price;
+                        localStorage.setItem('totaux_commande', prix_total);
+                    })
 
-                // Création du code HTML pour afficher le tableau ou boucle si panier vide avec desactivation du formulaire
-                if (JSON.parse(localStorage.getItem('panier')).length == 0) {
-                    //panier.innerHTML = "<img src="./ images / panier_vide.png"> <h1> Oh non !! votre panier est vide,</br> allez &agrave; la page d'accueil !</h1>";
-                    panier.innerHTML= '<p class="aucun_produit"><img class="aucun_article" src="./images/pas_article.png" width="20%"><span class="panier_vide">Votre panier est tristement vide !!<br> <a href="index.html">Consulter notre catalogue en ligne</a></span></p>';
+                    // Création du code HTML pour afficher le tableau ou boucle si panier vide avec desactivation du formulaire
+                    if (JSON.parse(localStorage.getItem('panier')).length == 0) {
+
+                        panier.innerHTML = '<p class="aucun_produit"><img class="aucun_article" src="./images/pas_article.png" width="20%"><span class="panier_vide">Votre panier est tristement vide !!<br> <a href="index.html">Consulter notre catalogue en ligne</a></span></p>';
+
+                        document.getElementById("contact-submit").disabled = true;
+                    } else {
+                        panier.innerHTML += `<table>${titre_tableau} ${ligne_tableau} <tr><td class="prix_produit" colspan="3">Prix total: <td class="total_produit">${prix_total} &#x20AC</td></tr></table>`;
+
+                    }
+                } else {// sinon la valeur panier n'existe pas 
+                    panier.innerHTML = '<p class="aucun_produit"><img class="aucun_article" src="./images/pas_article.png" width="20%"><span class="panier_vide">Votre panier est tristement vide !!<br> <a href="index.html">Consulter notre catalogue en ligne</a></span></p>';
 
                     document.getElementById("contact-submit").disabled = true;
-                } else {
-                    panier.innerHTML += `<table>${titre_tableau} ${ligne_tableau} <tr><td class="prix_produit" colspan="3">Prix total: <td class="total_produit">${prix_total} &#x20AC</td></tr></table>`;
-                    
+
                 }
             });
 
@@ -87,7 +94,7 @@ document.getElementById('contact').addEventListener('submit', (e) => {
 
     e.preventDefault();
 
-    //recupère les données du formulaire
+    //recupère les données du formulaire pour les envoyer au server
     let form = new FormData(document.getElementById('contact'));
     let contact = validateFormReturningContact(form);
     if (contact !== false){
@@ -102,6 +109,7 @@ document.getElementById('contact').addEventListener('submit', (e) => {
             body: JSON.stringify(sendOrder)
         }).then(response => response.json())
             .then(result => {
+                console.log(result);
                 console.log((result.contact).firstName);
                 console.log((result.contact).lastName);
                 console.log(result.orderId);
@@ -128,10 +136,12 @@ function validateFormReturningContact(form) {
         contact.address = form.get('adresse');
         contact.city = `${form.get('code_postal')} ${form.get('ville')}`;
         contact.email = form.get('email');
-        if (valid = true) { window.location = 'confirmation.html' }
+       
+        if (valid = true) { window.location = 'confirmation.html' };
         return contact
+    }
 
-    } else {
+    else {
         return false
     }
     

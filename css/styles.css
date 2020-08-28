@@ -134,11 +134,11 @@ td {
     font-family: 'Ubuntu', sans-serif;
 }
 p.aucun_produit {
-    display:flex;
-    flex-direction:row;
-    align-items:center;
-    margin-left:10%;
-    font-family: ubuntu;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-left: 10%;
+    font-family: 'Ubuntu', sans-serif;
 }
 
 /******CSS FORMULAIRE DE CONTACT******/
@@ -239,4 +239,31 @@ fieldset {
 
 :-ms-input-placeholder {
     color: #888;
+}
+
+/******CSS PAGE CONFIRMATION******/
+
+.merci{
+    width:60%;
+    margin-left:20%;
+}
+#confirmation {
+    margin-right: 16%;
+    font-family: 'Ubuntu', sans-serif;  
+}
+.hello{
+    font-weight: bolder;
+    color: coral;
+}
+.remerciement{
+    font-size: 110%;
+    text-align:justify;
+}
+.livraison{
+    font-size: 100%;
+}
+.bold {
+    font-weight: bold;
+    color: coral;
+    font-style:italic;
 }
