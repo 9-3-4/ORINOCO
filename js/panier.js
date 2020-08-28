@@ -136,9 +136,8 @@ function validateFormReturningContact(form) {
         contact.address = form.get('adresse');
         contact.city = `${form.get('code_postal')} ${form.get('ville')}`;
         contact.email = form.get('email');
-       
-        if (valid = true) { window.location = 'confirmation.html' };
-        return contact
+        setTimeout(() => { if (valid = true) { window.location = 'confirmation.html' }; }, 500);
+        return contact;
     }
 
     else {

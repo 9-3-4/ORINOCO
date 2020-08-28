@@ -15,15 +15,7 @@ confirmation.innerHTML = `<article>
                              <p class="livraison">Votre colis vous sera livr&#233 comme pr&#233vu sous 48h. <img src="./images/livraison.png"></p>
                           </article > `;
 
-
-
-
-
-
-
-
-console.log(confirmation);
-
+localStorage.clear();
 
 
 
