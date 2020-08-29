@@ -69,7 +69,7 @@ fetch("http://localhost:3000/api/cameras")
 
                     }
                 } else {// sinon la valeur panier n'existe pas 
-                    panier.innerHTML = '<p class="aucun_produit"><img class="aucun_article" src="./images/pas_article.png" width="20%"><span class="panier_vide">Votre panier est tristement vide !!<br> <a href="index.html">Consulter notre catalogue en ligne</a></span></p>';
+                    panier.innerHTML = '<p class="aucun_produit"><img class="aucun_article" src="./images/pas_article.png" width="20%"><span class="panier_vide">Votre panier est tristement vide !!<br> <a href="index.html">Consulter ici notre catalogue en ligne</a></span></p>';
 
                     document.getElementById("contact-submit").disabled = true;
 

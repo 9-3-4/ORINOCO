@@ -16,7 +16,13 @@ fetch("http://localhost:3000/api/cameras")
         //Parcourir le tableau de json et afficher en html ce que l'on veut
         liste_produit.then((valeur) => {
             valeur.forEach(appareil_photo =>
-                catalogue.innerHTML += '<article class="article_catalogue"><div class="photo_article"> <img src="' + appareil_photo.imageUrl + '"onclick="redirect_description_produit(\'' + appareil_photo._id +'\')" ></div><h2 class="index_name">' + appareil_photo.name + '</h2></div><button class="index_ensavoirplus" onclick="redirect_description_produit(\'' + appareil_photo._id+'\')" >En savoir +</button></article>');
-                        
+                catalogue.innerHTML += `<article class="article_catalogue">
+                                            <div class="photo_article">
+                                                <img src="${appareil_photo.imageUrl}" onclick="redirect_description_produit('${appareil_photo._id}')">
+                                            </div>
+                                            <h2 class="index_name">${appareil_photo.name}</h2>
+                                            </div>
+                                            <button class="index_ensavoirplus" onclick="redirect_description_produit('${appareil_photo._id}')">En savoir +</button>
+                                        </article>`)         
         });
     });//fin fetch
