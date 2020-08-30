@@ -23,7 +23,7 @@ nav.div2 {
     margin:10% 5%;
  }
 img.logo{
-    width:50%;
+    width:25%;
 }
 img.navigation_accueil, img.navigation_panier{
     width:30%;
@@ -282,7 +282,9 @@ img.chat {
 
 /******RESPONSIVE ******/
 @media only screen and (max-width: 767px) {
-
+    img.logo{
+        width:50%;
+    }
     /*index*/
     #catalogue {
         display: flex;
