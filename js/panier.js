@@ -78,6 +78,8 @@ fetch("http://localhost:3000/api/cameras")
 
         });//fin fetch 
 
+
+
 //traite le formulaire des le submit 
 document.getElementById('contact').addEventListener('submit', (e) => {
     /**
@@ -130,6 +132,7 @@ function validateFormReturningContact(form) {
     let errors = [];
     if (!validateString(form.get('prenom'))) {  valid = false; errors.push ("Prénom incorrect")}
     if (!validateString(form.get('nom'))) { valid = false; errors.push("Nom incorrect") }
+    if (!validateEmail(form.get('email'))) { valid = false; errors.push("Email incorrect")}
     if (valid) {
         contact.firstName = form.get('prenom');
         contact.lastName = form.get('nom');
