@@ -4,7 +4,7 @@ function poubelle(ligne) {
     ligne_a_supprimer = tableau_commande[ligne];
 
     //MAJ PANIER : creation du nouveau panier dans localStoage en excluant l'élèment cliquer
-    var panier_maj = [];
+    let panier_maj = [];
     tableau_commande.forEach(element => {
         if (element !== ligne_a_supprimer) {
             panier_maj.push(JSON.stringify(element));           
@@ -16,25 +16,20 @@ function poubelle(ligne) {
 //récupération de l'url avec une seule donnée, l'ID
 id_produit = (window.location.search.substr(1).split('id_produit='))[1];
 
+//Création du tableau de produit dans div panier
+   let panier = document.getElementById('panier');
 //lecture du fichier json qui envoie la promesse dans variable id_produit
 fetch("http://localhost:3000/api/cameras")
         .then(response => {
 
             fichier_json = response.json();
-            var liste_produit = Promise.resolve(fichier_json);
+            let liste_produit = Promise.resolve(fichier_json);
          
-            //Création du tableau de produit dans div panier
-            var panier = document.getElementById('panier');
-
             //gestion du tableau du panier avec prix total
-            var ligne_tableau = '';
-            let titre_tableau = `<tr>
-                                    <th class="photo_produit">Photo</th>
-					                <th class="nom_produit">Nom</th> 
-					                <th class="lentille_produit">Lentille</th>
-					                <th class="prix_produit">Prix</th>`;
-            var prix_total = 0;
-            var ligne = 0;
+            let titre_tableau = creationEnteteTableau();
+            let ligne_tableau = '';
+            let prix_total = 0;
+            let ligne = 0;
 
             //afficher seulement la valeur du tableau (array du json)
             liste_produit.then((valeur) => {
@@ -42,9 +37,10 @@ fetch("http://localhost:3000/api/cameras")
                     JSON.parse(localStorage.getItem('panier')).forEach(produit => {
 
                         //trouver dans les valeurs la ligne id_produit
-                        var choix_appareil_photo = valeur.find(appareil_photo => appareil_photo._id === produit.id);
+                        let choix_appareil_photo = valeur.find(appareil_photo => appareil_photo._id === produit.id);
 
                         // Creation du tableau pour afficher le choix d'article avec prix total
+
                         ligne_tableau += `<tr class="commande"> 
                                         <td><img src="${choix_appareil_photo.imageUrl}" width= "70%"></td>
 			                            <td>${choix_appareil_photo.name}</td> 
@@ -78,6 +74,13 @@ fetch("http://localhost:3000/api/cameras")
 
         });//fin fetch 
 
+function creationEnteteTableau() {
+    return `<tr>
+                <th class="photo_produit">Photo</th>
+			    <th class="nom_produit">Nom</th> 
+			    <th class="lentille_produit">Lentille</th>
+				<th class="prix_produit">Prix</th>`;
+}
 
 
 //traite le formulaire des le submit 
@@ -98,11 +101,11 @@ document.getElementById('contact').addEventListener('submit', (e) => {
 
     //recupère les données du formulaire pour les envoyer au server
     let form = new FormData(document.getElementById('contact'));
-    let contact = validateFormReturningContact(form);
+    let contact = valideFormRetourneContact(form);
     if (contact !== false){
         const products = JSON.parse(localStorage.getItem('panier')).map(elt => elt.id);
         const sendOrder = { contact, products }
-        console.log(sendOrder);
+        
 
         //pour envoie du formulaire
         fetch("http://localhost:3000/api/cameras/order", {
@@ -111,10 +114,6 @@ document.getElementById('contact').addEventListener('submit', (e) => {
             body: JSON.stringify(sendOrder)
         }).then(response => response.json())
             .then(result => {
-                console.log(result);
-                console.log((result.contact).firstName);
-                console.log((result.contact).lastName);
-                console.log(result.orderId);
                 localStorage.setItem('numero_commande', result.orderId);
                 localStorage.setItem('prenom', (result.contact).firstName);
                 localStorage.setItem('nom', (result.contact).lastName);
@@ -126,13 +125,13 @@ document.getElementById('contact').addEventListener('submit', (e) => {
 })
 
 //vérification des champs du formulaire
-function validateFormReturningContact(form) {
+function valideFormRetourneContact(form) {
     const contact = {};
     let valid = true
     let errors = [];
-    if (!validateString(form.get('prenom'))) {  valid = false; errors.push ("Prénom incorrect")}
-    if (!validateString(form.get('nom'))) { valid = false; errors.push("Nom incorrect") }
-    if (!validateEmail(form.get('email'))) { valid = false; errors.push("Email incorrect")}
+    if (!valideString(form.get('prenom'))) {  valid = false; errors.push ("Prénom incorrect")}
+    if (!valideString(form.get('nom'))) { valid = false; errors.push("Nom incorrect") }
+    if (!valideEmail(form.get('email'))) { valid = false; errors.push("Email incorrect")}
     if (valid) {
         contact.firstName = form.get('prenom');
         contact.lastName = form.get('nom');
@@ -147,12 +146,12 @@ function validateFormReturningContact(form) {
         return false
     }
     
-    function validateEmail(email) {
+    function valideEmail(email) {
         const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
         return re.test(String(email).toLowerCase());
     }
 
-    function validateString(string) {
+    function valideString(string) {
         const re = /[a-zA-Z\S0-9]{2,}/
         return re.test(string);
     }

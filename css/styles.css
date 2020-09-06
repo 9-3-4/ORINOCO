@@ -29,8 +29,6 @@ img.navigation_accueil, img.navigation_panier{
     width:30%;
 }
 
-
-
 /******CSS CATALOGUE DE LA PAGE INDEX******/
 #catalogue {
     grid-area: 2 / 1 / 3 / 3;
@@ -66,7 +64,6 @@ h2.index_name {
 }
 
 /******CSS PAGE DESCRIPTION******/
-
 h2.description_name {
     color: #aaa;
     font-family: 'Ubuntu', sans-serif;
@@ -151,7 +148,6 @@ p.aucun_produit {
 }
 
 /******CSS FORMULAIRE DE CONTACT******/
-
 div.containerFormulaire {
     grid-area: 1 / 2 / 2 / 3;
     /*display: inline-block;*/
@@ -233,25 +229,20 @@ fieldset {
     outline: 0;
     border: 1px solid #aaa;
 }
-
 ::-webkit-input-placeholder {
     color: #888;
 }
-
 :-moz-placeholder {
     color: #888;
 }
-
 ::-moz-placeholder {
     color: #888;
 }
-
 :-ms-input-placeholder {
     color: #888;
 }
 
 /******CSS PAGE CONFIRMATION******/
-
 img.merci{
     width:60%;
     margin-left:20%;
@@ -282,69 +273,67 @@ img.chat {
 
 /******RESPONSIVE ******/
 @media only screen and (max-width: 767px) {
-    img.logo{
-        width:50%;
-    }
-    /*index*/
-    #catalogue {
-        display: flex;
-        flex-direction: column;
-    }
-    /*description*/
+img.logo{
+    width:50%;
+}
+/*index*/
+#catalogue {
+    display: flex;
+    flex-direction: column;
+}
+/*description*/ 
+#description{
+    width:auto;     
+}
+h2.description_name {
+    margin:0 0 5px 90px ;
+    width:70%;
+    text-align:center;
+}
+div.description_photo{
+    width:200%;
+    top:80px;
+    margin-left:25%;
+}
+div.description_selectionne {
+    top: 10px;
+    left: 20%;
+    width:160%;
+}
+select.description_option {
+    top: 10px;
+    left: 60%;
+}
+p.description_prix {
+    top: 20px;
+    left: 20%;
+}
+.btn_ajouter_panier {
+    bottom: 5px;
+    left: 125%;
+}
     
-   #description{
-       width:auto;     
-   }
-    h2.description_name {
-        margin:0 0 5px 90px ;
-        width:70%;
-        text-align:center;
-    }
-     div.description_photo{
-       width:200%;
-       top:80px;
-       margin-left:25%;
-    }
-    div.description_selectionne {
-        top: 10px;
-        left: 20%;
-        width:160%;
-    }
-    select.description_option {
-        top: 10px;
-        left: 60%;
-    }
-    p.description_prix {
-        top: 20px;
-        left: 20%;
-    }
-    .btn_ajouter_panier {
-        bottom: 5px;
-        left: 125%;
-    }
-    
-    /*panier*/
-    div.container{
-        display:flex;
-        flex-direction:column;
-    }
-    #panier{
-        width:70%;
-        margin-left:auto;
-    }
-    /*formulaire*/
-    th, .total_produit, .prix_produit {
-        font-size: 85%;
-    }
-    td {
-        font-size:60%;
-    }
+/*panier*/
+div.container{
+    display:flex;
+    flex-direction:column;
+}
+#panier{
+    width:70%;
+    margin-left:auto;
+}
 
-    /*confirmation*/
-    
-    .remerciement{
-        font-size: 100%;
-    }
-    
-    
-    }
+/*formulaire*/
+th, .total_produit, .prix_produit {
+    font-size: 85%;
+}
+td {
+    font-size:60%;
+}
+
+/*confirmation*/
+.remerciement{
+    font-size: 100%;
+}
+       
+}

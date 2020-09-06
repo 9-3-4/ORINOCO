@@ -20,11 +20,10 @@ function creationSelect(liste_option_lentille){
     liste_deroulante_option = '<select class="description_option"><option>Selectionner une lentille</option>' ;
 
     //Récupération de toutes les valeurs pour les mettre dans une balise option de la liste deroulante
-    for (var valeur_option of liste_option_lentille) {
+    for (let valeur_option of liste_option_lentille) {
     liste_deroulante_option += "<option value='" + valeur_option + "'>" + valeur_option + "</option>";
 }
-
-//Fermeture de la balise select
+    //Fermeture de la balise select
     liste_deroulante_option += '</select>';
     return liste_deroulante_option
 }
@@ -32,7 +31,7 @@ function creationSelect(liste_option_lentille){
 function passer_commande(id_produit) {
 
     choix_valider = document.getElementsByClassName("description_option");
-    var option_lentille = choix_valider[0].value;
+    let option_lentille = choix_valider[0].value;
 
     //message alert si option non sélectionner
     if (option_lentille === "Selectionner une lentille") {

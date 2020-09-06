@@ -1,8 +1,8 @@
-//lecture du fichier json qui envoie la promesse dans variable liste_produit
+//redirige vers la page description
 function redirect_description_produit(id_produit) {
     window.location = 'description.html?id_produit='+ id_produit;
 }
-//pour lire le fichier json
+//pour lire le fichier json en recuperant le contenu de l url
 recupereContenuURL("http://localhost:3000/api/cameras")
     .then((valeur) => {
             valeur.forEach(appareil_photo =>
@@ -12,7 +12,7 @@ recupereContenuURL("http://localhost:3000/api/cameras")
         catalogue.innerHTML = "<h1>Erreur</h1>";
     });//fin fetch
 
-//recuperatin des aticles en json et renvoi en html
+//affiche en html le catalogue de produit
 function affichageProduitEnHTML(produit) {
     return `<article class="article_catalogue">
                 <div class="photo_article">
