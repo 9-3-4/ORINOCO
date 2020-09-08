@@ -2,7 +2,6 @@ html,body{
     margin:0;
     padding:0;
 }
-
 .parent {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -16,7 +15,6 @@ div.div1{
     grid-area: 1 / 1 / 1 / 3;
     margin:25px;
 }
-
 nav.div2 {
     grid-area: 1 / 2 / 2 / 3;
     justify-self:end;
@@ -126,7 +124,7 @@ p.description_prix {
     border: solid 4px coral;
 }
 th, .total_produit, .prix_produit {
-    font-size: 140%;
+    font-size: 100%;
     font-weight: bold;
     text-align: center;
     font-family: 'Ubuntu', sans-serif;
@@ -324,8 +322,11 @@ div.container{
 }
 
 /*formulaire*/
-th, .total_produit, .prix_produit {
-    font-size: 85%;
+th, .prix_produit {
+    font-size: 80%;
+}
+.total_produit{
+    font-size: 65%;
 }
 td {
     font-size:60%;

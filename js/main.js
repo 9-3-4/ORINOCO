@@ -1,7 +1,3 @@
-//redirige vers la page description
-function redirect_description_produit(id_produit) {
-    window.location = 'description.html?id_produit='+ id_produit;
-}
 //pour lire le fichier json en recuperant le contenu de l url
 recupereContenuURL("http://localhost:3000/api/cameras")
     .then((valeur) => {
@@ -12,7 +8,7 @@ recupereContenuURL("http://localhost:3000/api/cameras")
         catalogue.innerHTML = "<h1>Erreur</h1>";
     });//fin fetch
 
-//affiche en html le catalogue de produit
+//fonction qui affiche en html le catalogue de produit
 function affichageProduitEnHTML(produit) {
     return `<article class="article_catalogue">
                 <div class="photo_article">
@@ -22,10 +18,7 @@ function affichageProduitEnHTML(produit) {
                 <button class="index_ensavoirplus" onclick="redirect_description_produit('${produit._id}')">En savoir +</button>
             </article>`
 }
-
-//attente de resultat et renvoie une promess
-async function recupereContenuURL(url){
-    let result = await fetch(url)
-    .then(response => response.json());
-    return result;
+//fonction qui redirige vers la page description
+function redirect_description_produit(id_produit) {
+    window.location = 'description.html?id_produit=' + id_produit;
 }
