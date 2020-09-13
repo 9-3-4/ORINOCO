@@ -59,31 +59,6 @@ document.getElementById('contact').addEventListener('submit', (e) => {
         console.log("erreur dans le formulaire");
     } 
 })
-
-//fonction pour création des entetes du tableau de panier
-function creationEnteteTableau() {
-    return `<tr>
-                <th class="photo_produit">Photo</th>
-			    <th class="nom_produit">Nom</th> 
-			    <th class="lentille_produit">Lentille</th>
-				<th class="prix_produit">Prix</th>
-            </tr>`;
-}
-//fonction pour onclick pour supprimer des produits
-function poubelle(ligne) {
-    tableau_commande = JSON.parse(localStorage.getItem('panier'));
-    ligne_a_supprimer = tableau_commande[ligne];
-
-    //MAJ PANIER : creation du nouveau panier dans localStoage en excluant l'élèment cliquer
-    let panier_maj = [];
-    tableau_commande.forEach(element => {
-        if (element !== ligne_a_supprimer) {
-            panier_maj.push(JSON.stringify(element));
-        }
-    });
-    localStorage.setItem('panier', `[${panier_maj}]`);
-    location.reload();
-}
 //fonction qui vérifie des champs du formulaire
 function valideFormRetourneContact(form) {
     const contact = {};
@@ -115,6 +90,31 @@ function valideString(string) {
     const re = /[a-zA-Z\S0-9]{2,}/
     return re.test(string);
 }
+//fonction pour création des entetes du tableau de panier
+function creationEnteteTableau() {
+    return `<tr>
+                <th class="photo_produit">Photo</th>
+			    <th class="nom_produit">Nom</th> 
+			    <th class="lentille_produit">Lentille</th>
+				<th class="prix_produit">Prix</th>
+            </tr>`;
+}
+//fonction pour onclick pour supprimer des produits
+function poubelle(ligne) {
+    tableau_commande = JSON.parse(localStorage.getItem('panier'));
+    ligne_a_supprimer = tableau_commande[ligne];
+
+    //MAJ PANIER : creation du nouveau panier dans localStoage en excluant l'élèment cliquer
+    let panier_maj = [];
+    tableau_commande.forEach(element => {
+        if (element !== ligne_a_supprimer) {
+            panier_maj.push(JSON.stringify(element));
+        }
+    });
+    localStorage.setItem('panier', `[${panier_maj}]`);
+    location.reload();
+}
+
 //fonction si le panier est vide
 function panierVide(){
     panier.innerHTML = '<p class="aucun_produit"><img class="aucun_article" src="./images/pas_article.png" width="20%"><span class="panier_vide">Votre panier est tristement vide !!<br> <a href="index.html">Consulter notre catalogue en ligne</a></span></p>';

@@ -1,12 +1,12 @@
 //pour lire le fichier json en recuperant le contenu de l url
 recupereContenuURL("http://localhost:3000/api/cameras")
     .then((valeur) => {
-            valeur.forEach(appareil_photo =>
-                catalogue.innerHTML += affichageProduitEnHTML(appareil_photo) )       
+      valeur.forEach(appareil_photo =>
+        catalogue.innerHTML += affichageProduitEnHTML(appareil_photo) )       
     })
     .catch(error => {
         catalogue.innerHTML = "<h1>Erreur</h1>";
-    });//fin fetch
+    });
 
 //fonction qui affiche en html le catalogue de produit
 function affichageProduitEnHTML(produit) {
@@ -20,5 +20,5 @@ function affichageProduitEnHTML(produit) {
 }
 //fonction qui redirige vers la page description
 function redirect_description_produit(id_produit) {
-    window.location = 'description.html?id_produit=' + id_produit;
+    window.location = 'produit.html?id_produit=' + id_produit;
 }
