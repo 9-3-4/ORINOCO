@@ -1,0 +1,340 @@
+html,body{
+    margin:0;
+    padding:0;
+}
+.parent {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, auto);
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
+}
+
+/******CSS HEADER DE TOUTES LES PAGES******/
+div.div1{
+    grid-area: 1 / 1 / 1 / 3;
+    margin:25px;
+}
+nav.div2 {
+    grid-area: 1 / 2 / 2 / 3;
+    justify-self:end;
+    margin:10% 5%;
+ }
+img.logo{
+    width:25%;
+}
+img.navigation_accueil, img.navigation_panier{
+    width:30%;
+}
+
+/******CSS CATALOGUE DE LA PAGE INDEX******/
+#catalogue {
+    grid-area: 2 / 1 / 3 / 3;
+    display:grid;
+    grid-template-columns: repeat(3, 1fr);
+    text-align:center;
+    margin-top:40px;
+}
+.photo_article img {
+    width: 70%; 
+    cursor:pointer;
+}
+h2.index_name {
+    position: relative;
+    bottom: 20px;
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 20px;
+    color: #aaa;
+    padding:5px;
+}
+.index_ensavoirplus{
+    position:relative;
+    bottom:35px;
+    background-color: coral;
+    color:white;
+    padding: 15px;
+    cursor: pointer;
+    border: 1px solid #aaa;
+    margin-bottom:25px;
+}
+.index_ensavoirplus:hover {
+    background: #5c4f74;
+}
+
+/******CSS PAGE DESCRIPTION******/
+h2.description_name {
+    color: #aaa;
+    font-family: 'Ubuntu', sans-serif;
+    margin:50px 0 20px 50px;
+    width:40%;
+}
+div.description_photo img{
+    width:50%;
+    margin-left:50px;   
+}
+div.description_selectionne {
+    color: #5c4f74;
+    position:relative;
+    bottom:180px;
+    left:75%;
+    font-size:120%;
+}
+select.description_option {
+    position: relative;
+    bottom: 170px;
+    left: 75%;
+    border: 1px solid #aaa;
+}
+p.description_prix {
+    position: relative;
+    bottom: 160px;
+    left: 80%;
+    font-size:25px;
+    font-weight:bold;  
+}
+.btn_ajouter_panier {
+    background-color: coral;
+    color: white;
+    cursor: pointer;
+    position: relative;
+    bottom: 270px;
+    left:170%;
+    padding:15px;
+    border: 1px solid #aaa;
+}
+.btn_ajouter_panier:hover {
+    background: #5c4f74;
+}
+
+/******CSS PANIER******/
+.container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: 1fr;
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
+}
+#panier {
+    grid-area: 1 / 1 / 2 / 2;
+    background: #F9F9F9;
+    width: 90%;
+    padding: 2%;
+    margin: 5% auto auto 15%;
+    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+    border: solid 4px coral;
+}
+th, .total_produit, .prix_produit {
+    font-size: 100%;
+    font-weight: bold;
+    text-align: center;
+    font-family: 'Ubuntu', sans-serif;
+    background-color: #F9F9F9;
+}
+td {
+    width: 25%;
+    padding: 1%;
+    text-align: center;
+    background-color: #f4f0e6;
+    font-family: 'Ubuntu', sans-serif;
+}
+p.aucun_produit {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-left: 10%;
+    font-family: 'Ubuntu', sans-serif;
+}
+
+/******CSS FORMULAIRE DE CONTACT******/
+div.containerFormulaire {
+    grid-area: 1 / 2 / 2 / 3;
+    /*display: inline-block;*/
+    width: 70%;
+    margin: 5% auto 6% auto; 
+    text-align:center;
+}
+#contact input[type="text"],
+#contact input[type="email"],
+#contact input[type="number"],
+#contact textarea,
+#contact-submit {
+    font: 400 12px/16px "Roboto", Helvetica, Arial, sans-serif;
+}
+#contact {
+    background: #F9F9F9;
+    padding: 10px;
+    margin: 0px;
+    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+    border: solid 4px coral;
+}
+#contact h3 {
+    display: block;
+    font-size: 15px;
+    margin-bottom: 10px;
+}
+fieldset {
+    border: medium none !important;
+    margin: 0 0 10px;
+    min-width: 100%;
+    padding: 0;
+    width: 100%;
+    font-size: 20px;
+    font-family: 'Ubuntu', sans-serif;
+}
+#contact input[type="text"],
+#contact input[type="email"],
+#contact input[type="number"],
+#contact textarea {
+    width: 76%;
+    border: 1px solid #ccc;
+    background: #FFF;
+    margin: 0;
+    padding: 8px;
+}
+#contact input[type="text"]:hover,
+#contact input[type="email"]:hover,
+#contact input[type="number"]:hover
+#contact textarea:hover {
+    -webkit-transition: border-color 0.3s ease-in-out;
+    -moz-transition: border-color 0.3s ease-in-out;
+     transition: border-color 0.3s ease-in-out;
+     border: 1px solid #aaa;
+}
+#contact textarea {
+    height: 100px;
+    max-width: 100%;
+    resize: none;
+}
+#contact-submit {
+    cursor: pointer;
+    width: 35%;
+    border: none;
+    background: coral;
+    color: #FFF;
+    margin: 0;
+    padding: 8px;
+    font-size: 15px;
+    transition: background-color 1s ease-out;
+}
+#contact-submit:hover {
+    background: #5c4f74;
+}
+#contact-submit:disabled {
+    background: #dddddd;
+}
+#contact input:focus,
+#contact textarea:focus {
+    outline: 0;
+    border: 1px solid #aaa;
+}
+::-webkit-input-placeholder {
+    color: #888;
+}
+:-moz-placeholder {
+    color: #888;
+}
+::-moz-placeholder {
+    color: #888;
+}
+:-ms-input-placeholder {
+    color: #888;
+}
+
+/******CSS PAGE CONFIRMATION******/
+img.merci{
+    width:60%;
+    margin-left:20%;
+}
+#confirmation {
+    margin-right: 16%;
+    font-family: 'Ubuntu', sans-serif;  
+}
+.hello{
+    font-weight: bolder;
+    color: coral;
+}
+.remerciement{
+    font-size: 110%;
+    text-align:justify;
+}
+.livraison{
+    font-size: 100%;
+}
+.bold {
+    font-weight: bold;
+    color: coral;
+    font-style:italic;
+}
+img.chat {
+    margin-left: 30%;
+}
+
+/******RESPONSIVE ******/
+@media only screen and (max-width: 767px) {
+img.logo{
+    width:50%;
+}
+/*index*/
+#catalogue {
+    display: flex;
+    flex-direction: column;
+}
+/*description*/ 
+#description{
+    width:auto;     
+}
+h2.description_name {
+    margin:0 0 5px 90px ;
+    width:70%;
+    text-align:center;
+}
+div.description_photo{
+    width:200%;
+    top:80px;
+    margin-left:25%;
+}
+div.description_selectionne {
+    top: 10px;
+    left: 20%;
+    width:160%;
+}
+select.description_option {
+    top: 10px;
+    left: 60%;
+}
+p.description_prix {
+    top: 20px;
+    left: 20%;
+}
+.btn_ajouter_panier {
+    bottom: 5px;
+    left: 125%;
+}
+    
+/*panier*/
+div.container{
+    display:flex;
+    flex-direction:column;
+}
+#panier{
+    width:70%;
+    margin-left:auto;
+}
+
+/*formulaire*/
+th, .prix_produit {
+    font-size: 80%;
+}
+.total_produit{
+    font-size: 65%;
+}
+td {
+    font-size:60%;
+}
+
+/*confirmation*/
+.remerciement{
+    font-size: 100%;
+}
+       
+}
