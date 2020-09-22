@@ -37,7 +37,7 @@ document.getElementById('contact').addEventListener('submit', (e) => {
 
     e.preventDefault();
 
-    //recupère les données du formulaire pour les envoyer au server
+    //recupère les données du formulaire pour les envoyer au serveur
     let form = new FormData(document.getElementById('contact'));
     let contact = valideFormRetourneContact(form);
     if (contact !== false){
@@ -59,7 +59,7 @@ document.getElementById('contact').addEventListener('submit', (e) => {
         console.log("erreur dans le formulaire");
     } 
 })
-//fonction qui vérifie des champs du formulaire
+//fonction qui vérifie les champs du formulaire
 function valideFormRetourneContact(form) {
     const contact = {};
     let valid = true
@@ -99,7 +99,7 @@ function creationEnteteTableau() {
 				<th class="prix_produit">Prix</th>
             </tr>`;
 }
-//fonction pour onclick pour supprimer des produits
+//fonction pour supprimer des produits
 function poubelle(ligne) {
     tableau_commande = JSON.parse(localStorage.getItem('panier'));
     ligne_a_supprimer = tableau_commande[ligne];

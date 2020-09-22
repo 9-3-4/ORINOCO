@@ -1,12 +1,12 @@
 //récupération de l'url avec une seule donnée, l'ID du produit choisi
 let id_produit = (window.location.search.substr(1).split('id_produit='))[1];
-//
+
 let description = document.getElementById('description');
 //pour lire le fichier json en recuperant le contenu de l url
 recupereContenuURL("http://localhost:3000/api/cameras/" + id_produit)
     .then((appareil) => {                                 
        //Récupération des valeurs du tableau des options dans une variable et affichage html
-       let liste_option_lentille = (appareil.lenses).values();
+       let liste_option_lentille = appareil.lenses.values();
        let liste_deroulante_option = creationSelect(liste_option_lentille);                           
        description.innerHTML = affichageArticle(appareil, liste_deroulante_option);
 });
@@ -42,7 +42,7 @@ function passer_commande(id_produit) {
     let option_lentille = choix_valider[0].value;
     //affichage message alert si option non selectionner
     if (option_lentille === "Selectionner une lentille") {
-        alert("Oups ! Vous avez oubli&#233 de selectionner une lentille");
+        alert("Oups ! Veuillez selectionner une lentille");
     }
     else {
         ajoutPanier(id_produit, option_lentille);

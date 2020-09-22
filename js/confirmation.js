@@ -16,7 +16,7 @@ return`<article>
                     <img class="chat" src="./images/livraison.png">
         </article > `;
 }
-
+//pour supprimer le localStorage après la page confirmation
 localStorage.clear();
 
 
