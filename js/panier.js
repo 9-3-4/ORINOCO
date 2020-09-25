@@ -20,7 +20,9 @@ recupereContenuURL("http://localhost:3000/api/cameras")
                 })
                 //affichage en html du tableau panier
                 panier.innerHTML += `<table>${titre_tableau} ${ligne_tableau} <tr><td class="prix_produit" colspan="3">Prix total: <td class="total_produit">${prix_total} &#x20AC</td></tr></table>`;
-            } 
+            }
+        } else {
+            panierVide();
         }
     });
 //traite le formulaire (submit) 
@@ -40,24 +42,28 @@ document.getElementById('contact').addEventListener('submit', (e) => {
     //recupère les données du formulaire pour les envoyer au serveur
     let form = new FormData(document.getElementById('contact'));
     let contact = valideFormRetourneContact(form);
-    if (contact !== false){
-        const products = JSON.parse(localStorage.getItem('panier')).map(elt => elt.id);
-        const sendOrder = { contact, products }
+        if (contact !== false) {
+            const products = JSON.parse(localStorage.getItem('panier')).map(elt => elt.id);
+            const sendOrder = { contact, products }
 
-        //pour envoie du formulaire
-        fetch("http://localhost:3000/api/cameras/order", {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(sendOrder)
-        }).then(response => response.json())
-            .then(result => {
-                localStorage.setItem('numero_commande', result.orderId);
-                localStorage.setItem('prenom', (result.contact).firstName);
-                localStorage.setItem('nom', (result.contact).lastName);
-            });
-    } else {
-        console.log("erreur dans le formulaire");
-    } 
+            //pour envoie du formulaire
+            fetch("http://localhost:3000/api/cameras/order", {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(sendOrder)
+            }).then(response => response.json())
+                .then(result => {
+                    localStorage.setItem('numero_commande', result.orderId);
+                    localStorage.setItem('prenom', (result.contact).firstName);
+                    localStorage.setItem('nom', (result.contact).lastName);
+                    window.location = 'confirmation.html';
+                });
+        } else {
+            console.log("erreur dans le formulaire");
+
+        }
+    
+ 
 })
 //fonction qui vérifie les champs du formulaire
 function valideFormRetourneContact(form) {
@@ -71,9 +77,9 @@ function valideFormRetourneContact(form) {
         contact.firstName = form.get('prenom');
         contact.lastName = form.get('nom');
         contact.address = form.get('adresse');
-        contact.city = `${form.get('code_postal')} ${form.get('ville')}`;
+        contact.city = `${form.get('Code_postal')} ${form.get('ville')}`;
         contact.email = form.get('email');
-        setTimeout(() => { if (valid = true) { window.location = 'confirmation.html' }; }, 500);
+        
         return contact;
     }
     else {
@@ -126,11 +132,11 @@ ligne_tableau += `<tr class="commande">
                     <td><img src="${item.imageUrl}" width= "70%"></td>
 			        <td>${item.name}</td> 
 			        <td>${item.lentille}</td> 
-			        <td>${item.price} &#x20AC</td> 
+			        <td>${parseInt(item.price)/100} &#x20AC</td> 
 			        <td><img src="./images/panier_supprimer.png" width="30" onclick= poubelle("${numero_ligne}")></td>
 			      </tr>`;
 
 ligne++;
-prix_total = prix_total + item.price;
+prix_total = prix_total + parseInt(item.price)/100;
 localStorage.setItem('totaux_commande', prix_total);
 }
