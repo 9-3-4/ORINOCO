@@ -32,7 +32,7 @@ function affichageArticle(appareil, liste_deroulante_option) {
                <p>${appareil.description}</p>
            </div>
            ${liste_deroulante_option}
-               <p class="description_prix">${appareil.price} &#x20AC </p>
+               <p class="description_prix">${parseInt(appareil.price)/100} &#x20AC </p>
            <button class="btn_ajouter_panier" onclick="passer_commande(\''+id_produit+'\')">Commander</button>
        </article > `;
 }
